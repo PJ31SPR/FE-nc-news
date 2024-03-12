@@ -29,3 +29,17 @@
   border-radius: 4px;
   margin-bottom: 10px;
 }
+
+.comment-card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.comment-card p {
+  margin: 0;
+}
+
+.comment-card span {
+  font-style: italic;
+}
