@@ -4,15 +4,15 @@ import ArticlesList from './ArticlesList';
 import Filters from './Filters';
 import Loading from './Loading';
 
-
 const Articles = () => {
+
+    const [isLoading, setIsLoading] = useState(true);
 
     const [filters, setFilter] = useState({
          sort_by: 'created_at',
          order_by: 'desc'
     });
 
-    const [isLoading, setIsLoading] = useState(true);
 
     const [articles, setArticles] = useState([]);
 
