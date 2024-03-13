@@ -5,6 +5,7 @@ import Loading from "./Loading";
 import { Link } from "react-router-dom";
 import CommentsCard from "./CommentsCard";
 import VoteCard from "./VoteCard";
+import CommentForm from "./CommentForm";
 
 const ArticlePage = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -55,8 +56,9 @@ const ArticlePage = () => {
       )}
       <div>
         <h3> Join the discussion below </h3>
-        {comments.map((comment) => (
-          <CommentsCard key={comment.comment_id} comment={comment} />
+        <CommentForm  comments={comments} setComments={setComments} article_id={article_id}/>
+        {comments.map((comment, index) => (
+          <CommentsCard key={index} comment={comment}  />
         ))}
       </div>
     </>

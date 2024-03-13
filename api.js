@@ -30,3 +30,11 @@ export const getCommentsById = (article_id) => {
 export const patchVotes = (article_id, votes) => {
 return ncNewsApi.patch(`/articles/${article_id}`, {inc_votes : votes})
 }
+
+export const postComment = (currentUser, postInput, article_id) => {
+    return ncNewsApi.post(`/articles/${article_id}/comments`, {username: currentUser, body: postInput} )
+    .then((response) => {
+      const newComment = response.data.comment
+      return newComment
+    })
+}
