@@ -58,7 +58,7 @@ const ArticlePage = () => {
         <h3> Join the discussion below </h3>
         <CommentForm  comments={comments} setComments={setComments} article_id={article_id}/>
         {comments.map((comment, index) => (
-          <CommentsCard key={index} comment={comment}  />
+          <CommentsCard key={index} comment={comment} setComments={setComments} comments={comments}  />
         ))}
       </div>
     </>
