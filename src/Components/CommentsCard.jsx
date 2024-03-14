@@ -10,7 +10,6 @@ const CommentsCard = ({comment, setComments, comments}) => {
 
 
     const deleteHandler = (event) => {
-    event.preventDefault()
     setIsLoading(true)
     const updatedComments = comments.filter((c) => c.comment_id !== comment.comment_id);
     setComments(updatedComments);
@@ -19,10 +18,10 @@ const CommentsCard = ({comment, setComments, comments}) => {
 
     })
     }
-
+    
     return (
         <div className='comment-card'>
-          {currentUser === comment.author && (
+          {currentUser.username === comment.author && (
               <button onClick={deleteHandler} disabled={isLoading} >Delete Comment</button>
               )}
        

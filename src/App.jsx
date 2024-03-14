@@ -8,11 +8,12 @@ import Articles from './Components/Articles';
 import ArticlePage from './Components/ArticlePage';
 import Topics from './Components/Topics';
 import ArticlesByTopic from './Components/ArticlesByTopic';
+import Users from './Components/Users';
 
 
 function App() {
 
-  const [currentUser, setCurrentUser] = useState('tickle122');
+  const [currentUser, setCurrentUser] = useState({username: '', avatar_url: ""});
 
   return (
    
@@ -26,6 +27,7 @@ function App() {
         <Route path= '/articles/:article_id' element={<ArticlePage />} /> 
         <Route path= '/topics' element={<Topics />} />
         <Route path= 'articles/topics/:slug' element={<ArticlesByTopic />}/>
+        <Route path= 'users' element={<Users />}/>
       </Routes>
       </>
     </UserContext.Provider>
