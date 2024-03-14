@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useState} from "react";
+import { useParams, Link } from "react-router-dom";
 import { getArticleById, getCommentsById } from "../../api";
 import Loading from "./Loading";
-import { Link } from "react-router-dom";
+
 import CommentsCard from "./CommentsCard";
 import VoteCard from "./VoteCard";
 import CommentForm from "./CommentForm";
@@ -12,9 +12,12 @@ const ArticlePage = () => {
 
   const { article_id } = useParams();
 
+
   const [article, setArticle] = useState(null);
 
   const [comments, setComments] = useState([]);
+
+  const [isFromArticlesByTopic, setIsFromArticlesByTopic] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
@@ -32,9 +35,17 @@ const ArticlePage = () => {
     });
   }, [article_id]);
 
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    setIsFromArticlesByTopic(urlParams.get("source") === "topics");
+  }, []);
+
+
   if (isLoading) {
     return <Loading />;
   }
+
+ 
 
   return (
     <>
@@ -50,7 +61,11 @@ const ArticlePage = () => {
           <br />
           <VoteCard article={article}/>
           <br />
-          <Link to="/articles"> Back</Link>
+    
+
+          <Link to={isFromArticlesByTopic ? `/articles/topics/${article.topic}` : "/articles"}>Back</Link>
+
+
           <br />
         </div>
       )}
