@@ -21,7 +21,7 @@ const CommentForm = ({ comments, setComments, article_id }) => {
         event.preventDefault()
         setIsLoading(true)
         setIsSuccess(false)
-        postComment(currentUser, postInput, article_id).then((newComment) => {
+        postComment(article_id, currentUser.username, postInput).then((newComment) => {
             setComments((previousComments) => [newComment, ...previousComments]);
             setIsLoading(false)
             setIsSuccess(true);
@@ -38,7 +38,7 @@ const CommentForm = ({ comments, setComments, article_id }) => {
             <form onSubmit={handleSubmit} >
                 <div>
                 <label  htmlFor="username"> Username:</label>
-                <p> {currentUser} </p>
+                <p> {currentUser.username} </p>
                 <label htmlFor="comment" > Comment:</label>
                 <textarea type='text' value={postInput} onChange={changePostInput} required> </textarea>
                 </div>

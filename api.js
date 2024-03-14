@@ -31,8 +31,13 @@ export const patchVotes = (article_id, votes) => {
 return ncNewsApi.patch(`/articles/${article_id}`, {inc_votes : votes})
 }
 
-export const postComment = (currentUser, postInput, article_id) => {
-    return ncNewsApi.post(`/articles/${article_id}/comments`, {username: currentUser, body: postInput} )
+export const postComment = (article_id, currentUser, postInput) => {
+    const newComment = {
+        username: currentUser,
+        body: postInput
+      };
+    
+    return ncNewsApi.post(`/articles/${article_id}/comments`, newComment)
     .then((response) => {
       const newComment = response.data.comment
       return newComment
@@ -40,7 +45,7 @@ export const postComment = (currentUser, postInput, article_id) => {
 }
 
 export const deleteComment = (comment_id) => {
-    return ncNewsApi.delete(`/comments/${comment_id}`)
+    return ncNewsApi.delete(`/comments/${comment_id}`) 
 }
 
 export const getAllTopics = () => {
@@ -54,5 +59,12 @@ export const getArticlesByTopic = (slug) => {
     return ncNewsApi.get(`/articles?topic=${slug}`)
     .then((response) => {
     return response.data.articles
+    })
+}
+
+export const getAllUsers = () => {
+    return ncNewsApi.get(`/users`)
+    .then((response) => {
+     return response.data.users
     })
 }
