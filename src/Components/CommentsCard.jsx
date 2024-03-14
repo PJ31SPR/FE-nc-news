@@ -24,10 +24,10 @@ const CommentsCard = ({comment, setComments, comments}) => {
         <div className='comment-card'>
           {currentUser === comment.author && (
               <button onClick={deleteHandler} disabled={isLoading} >Delete Comment</button>
-            )}
+              )}
        
+              {isLoading? (<p>Deleting comment</p>) : ('')}
        
-        {isLoading? (<p>Deleting comment</p>) : ('')}
          <p>Posted by: {comment.author} on {comment.created_at}</p>
          <br />
          <p>{comment.body}</p>

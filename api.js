@@ -42,3 +42,17 @@ export const postComment = (currentUser, postInput, article_id) => {
 export const deleteComment = (comment_id) => {
     return ncNewsApi.delete(`/comments/${comment_id}`)
 }
+
+export const getAllTopics = () => {
+    return ncNewsApi.get('/topics')
+    .then((response) => {
+     return response.data.topics
+    })
+}
+
+export const getArticlesByTopic = (slug) => {
+    return ncNewsApi.get(`/articles?topic=${slug}`)
+    .then((response) => {
+    return response.data.articles
+    })
+}
