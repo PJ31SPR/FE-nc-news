@@ -1,6 +1,7 @@
 import React, {useState, useContext, useEffect} from 'react';
 import UserContext from '../Contexts/UserContext';
 import { postComment } from '../../api';
+import ErrorFetch from './ErrorFetch';
 
 
 const CommentForm = ({ comments, setComments, article_id }) => {
@@ -12,6 +13,8 @@ const CommentForm = ({ comments, setComments, article_id }) => {
     const [postInput, setPostInput] = useState('')
 
     const [isSuccess, setIsSuccess] = useState(false);
+
+    const [error, setError] = useState(null);
     
     const changePostInput = (event) => {
      setPostInput(event.target.value)
@@ -19,6 +22,17 @@ const CommentForm = ({ comments, setComments, article_id }) => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
+
+        if (!currentUser.username) {
+            setError('Please log in to comment');
+            setTimeout(() => {
+
+                setError(null);
+            }, 2000);
+            setIsLoading(false);
+            return;
+          }
+
         setIsLoading(true)
         setIsSuccess(false)
         postComment(article_id, currentUser.username, postInput).then((newComment) => {
@@ -30,8 +44,18 @@ const CommentForm = ({ comments, setComments, article_id }) => {
                 setIsSuccess(false);
             }, 2000);
         setPostInput('')
+        setError(null)
         })
+        .catch((error) => {
+            console.error('Error posting comment:', error);
+            setError('Failed to post comment. Please try again later.');
+            setIsLoading(false);
+        });
     }
+
+    if (error) {
+        return <ErrorFetch error={error} />; 
+      }
 
     return (
         <>

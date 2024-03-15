@@ -9,7 +9,7 @@ import ArticlePage from './Components/ArticlePage';
 import Topics from './Components/Topics';
 import ArticlesByTopic from './Components/ArticlesByTopic';
 import Users from './Components/Users';
-
+import ErrorPage from './Components/ErrorPage';
 
 function App() {
 
@@ -28,6 +28,7 @@ function App() {
         <Route path= '/topics' element={<Topics />} />
         <Route path= 'articles/topics/:slug' element={<ArticlesByTopic />}/>
         <Route path= 'users' element={<Users />}/>
+        <Route path="*" element={<ErrorPage/>} />
       </Routes>
       </>
     </UserContext.Provider>
