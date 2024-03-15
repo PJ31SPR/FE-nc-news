@@ -31,10 +31,10 @@ const CommentsCard = ({comment, setComments, comments}) => {
 
     
     return (
-        <div className='comment-card'>
+        <article className='comment-card'>
        
           {currentUser.username === comment.author && (
-              <button onClick={deleteHandler} disabled={isLoading} >Delete Comment</button>
+              <button onClick={deleteHandler} disabled={isLoading} aria-label="Delete Comment" >Delete Comment</button>
               )}
        
               {isLoading? (<p>Deleting comment</p>) : ('')}
@@ -44,7 +44,7 @@ const CommentsCard = ({comment, setComments, comments}) => {
          <p>{comment.body}</p>
          <br />
          <p>Votes: {comment.votes}</p>
-        </div>
+        </article>
     );
 };
 

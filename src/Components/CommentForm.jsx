@@ -64,9 +64,9 @@ const CommentForm = ({ comments, setComments, article_id }) => {
                 <label  htmlFor="username"> Username:</label>
                 <p> {currentUser.username} </p>
                 <label htmlFor="comment" > Comment:</label>
-                <textarea type='text' value={postInput} onChange={changePostInput} required> </textarea>
+                <textarea id='comment' type='text' value={postInput} onChange={changePostInput} required> </textarea>
                 </div>
-                <button type="submit" disabled={isLoading}>  {isLoading ? 'Submitting...' : 'Submit'} </button>
+                <button type="submit" disabled={isLoading} aria-label="Submit Comment">  {isLoading ? 'Submitting...' : 'Submit'} </button>
                 {isSuccess? (<p>Comment posted successfully!</p>) : ('') } 
             </form>
             

@@ -9,7 +9,8 @@ const Header = () => {
     return (
         <header>
 
-        <h1> &lt;NC-News/&gt; </h1>
+        <h1 aria-label="NC News" > &lt;NC-News/&gt; </h1>
+    
 
 
         <nav id='nav'>
@@ -20,10 +21,10 @@ const Header = () => {
    
 
         {currentUser.username ? (
-                <>
-                    <img src={currentUser.avatar_url} alt="User Avatar" />
-                    <p>{currentUser.username} is logged in!</p>
-                </>
+            <div>
+                <img src={currentUser.avatar_url} alt={`${currentUser.username}'s Avatar`} />
+                <p>{currentUser.username} is logged in!</p>
+            </div>
             ) : (
                 <p>No user logged in</p>
             )}
