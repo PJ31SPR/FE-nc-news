@@ -10,6 +10,15 @@ const Header = () => {
         <header>
 
         <h1> &lt;NC-News/&gt; </h1>
+
+
+        <nav id='nav'>
+        <Link to='/home'> Home </Link>
+        <Link to='/articles'> Articles</Link>
+        <Link to='/topics'> Topics </Link>
+        <Link to='/users'> Switch Users</Link>
+   
+
         {currentUser.username ? (
                 <>
                     <img src={currentUser.avatar_url} alt="User Avatar" />
@@ -18,15 +27,9 @@ const Header = () => {
             ) : (
                 <p>No user logged in</p>
             )}
-
-
-        <nav id='nav'>
-        <Link to='/home'> Home </Link>
-        <Link to='/articles'> Articles</Link>
-        <Link to='/topics'> Topics </Link>
-        <Link to='/users'> Switch Users</Link>
         </nav>
 
+      
         </header>
     );
 };

@@ -2,12 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getArticlesByTopic } from "../../api";
 import "./TopicsCard.css";
+import ErrorFetch from "./ErrorFetch";
 
 const ArticlesByTopic = () => {
   const { slug } = useParams();
 
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     setIsLoading(true);
@@ -18,6 +20,7 @@ const ArticlesByTopic = () => {
       })
       .catch((error) => {
         console.error("Error fetching articles:", error);
+        setError("Failed to fetch articles. Please try again later.");
         setIsLoading(false);
       });
   }, [slug]);
@@ -26,6 +29,10 @@ const ArticlesByTopic = () => {
     return <p>Loading articles...</p>;
   }
 
+
+  if (error) {
+    <ErrorFetch error={error}/>
+  }
 
 
   return (
