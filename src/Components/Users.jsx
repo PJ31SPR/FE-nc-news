@@ -33,11 +33,11 @@ const Users = () => {
     }
 
     return (
-        <div className="users-container">
+        <div className="users-container" role="list">
        
       
             {users.map((user) => (
-                <UserCard key={user.username} className='user-card' user={user} />
+                <UserCard key={user.username} className='user-card' user={user} role="listitem"/>
             ))}
        
        </div>

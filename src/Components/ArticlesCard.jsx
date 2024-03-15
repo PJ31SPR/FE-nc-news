@@ -10,7 +10,7 @@ const ArticlesCard = ({ article, setArticles }) => {
     return (
         <div className='article-card' >
             <h2>{article.title} </h2>  
-            <img src={article.article_img_url} alt={article.title} />
+            <img src={article.article_img_url} alt={`An image of ${article.title}`} />
             <p>By: {article.author} </p>
             <p>Posted on: {article.created_at} </p>
             <p>Votes: {article.votes} </p>

@@ -33,8 +33,8 @@ const VoteCard = ({ article }) => {
         <div>
             <p>Thoughts? Vote Below</p>
             <p>Votes: {voteCount}</p>
-            <button onClick={() => handleVote(1)}>+</button>
-            <button onClick={() => handleVote(-1)}>-</button>
+            <button onClick={() => handleVote(1)}  aria-label="Upvote">+</button>
+            <button onClick={() => handleVote(-1)}  aria-label="Downvote" >-</button>
         </div>
     );
 };

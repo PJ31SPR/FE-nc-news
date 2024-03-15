@@ -7,7 +7,7 @@ const TopicsList = ({ topics, SetTopics }) => {
     
     return (
       
-              <ul>
+            <ul>
                 {topics.map((topic) => (
                     <TopicsCard key={topic.slug} topic={topic} SetTopics={SetTopics} />
                 ))}

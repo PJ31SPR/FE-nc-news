@@ -56,7 +56,7 @@ useEffect(() => {
       {article && (
         <div className="single-article">
           <h2>{article.title}</h2>
-          <img src={article.article_img_url} alt={article.title} />
+          <img src={article.article_img_url} alt= {`An image of ${article.title}`}/>
           <p>{article.body}</p>
           <br></br>
           <span>Comments: {article.comment_count}</span>

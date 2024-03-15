@@ -43,12 +43,12 @@ const ArticlesByTopic = () => {
 
       <ul>
         {articles.map((article) => (
-          <div key={article.article_id} className="topics-card">
+          <div key={article.article_id} className="topics-card" role="listitem">
             <Link to={`/articles/${article.article_id}?source=topics`}>
               <h3>{article.title}</h3>
             </Link>
 
-            <img src={article.article_img_url} alt={article.title} />
+            <img src={article.article_img_url} alt={`An image of ${article.title}`} />
             <p>By: {article.author} </p>
             <p>Posted on: {article.created_at} </p>
             <p>Votes: {article.votes} </p>
