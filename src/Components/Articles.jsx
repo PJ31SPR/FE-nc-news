@@ -4,9 +4,15 @@ import ArticlesList from './ArticlesList';
 import Filters from './Filters';
 import Loading from './Loading';
 import ErrorFetch from './ErrorFetch';
+import { styled } from '@mui/system'; 
+
+const StyledArticlesContainer = styled('div')({
+  padding: '1rem', 
+  fontFamily:  'Consolas, monospace', 
+  color: '#6a287e'
+});
 
 const Articles = () => {
-
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null); 
 
@@ -14,7 +20,6 @@ const Articles = () => {
          sort_by: 'created_at',
          order_by: 'desc'
     });
-
 
     const [articles, setArticles] = useState([]);
 
@@ -34,17 +39,17 @@ const Articles = () => {
 
     if (error) {
         return <ErrorFetch error={error} />; 
-      }
+    }
    
     return (
-        <div>
-        <Filters setFilter={setFilter} />
-        {isLoading ? (
-            <Loading />
-        ) : (
-            <ArticlesList articles={articles} setArticles={setArticles} />
-        )}
-        </div>
+        <StyledArticlesContainer>
+            <Filters setFilter={setFilter} />
+            {isLoading ? (
+                <Loading />
+            ) : (
+                <ArticlesList articles={articles} setArticles={setArticles} />
+            )}
+        </StyledArticlesContainer>
     );
 };
 
